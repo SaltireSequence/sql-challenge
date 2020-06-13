@@ -19,7 +19,7 @@ CREATE TABLE "titles" (
 --Employees Table
 --Primary Key Contraint added, based on ERD and .CSV observations
 CREATE TABLE "employees" (
-    "emp_no" VARCHAR   NOT NULL,
+    "emp_no" INT   NOT NULL,
     "emp_title_id" VARCHAR   NOT NULL,
     "birth_date" DATE   NOT NULL,
     "first_name" VARCHAR(30)   NOT NULL,
@@ -97,3 +97,21 @@ SELECT * FROM salaries
 SELECT * FROM departments
 SELECT * FROM dept_manager
 SELECT * FROM dept_emp
+
+-- Returning employee number, last name, first name, sex, and salary.
+SELECT salaries.emp_no, last_name, first_name, sex, salary
+FROM employees
+INNER JOIN salaries
+ON employees.emp_no = salaries.emp_no;
+
+--Returning first name, last name, and hire date for employees who were hired in 1986.
+SELECT last_name, first_name, hire_date
+FROM employees
+WHERE
+	hire_date BETWEEN '1986-01-01' AND '1986-12-31'
+	
+--Returning the manager of each department with the following information:
+--department number, department name, the manager's employee number, last name, first name.
+SELECT * 
+
+
