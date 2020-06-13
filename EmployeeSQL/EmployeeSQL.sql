@@ -98,20 +98,32 @@ SELECT * FROM departments
 SELECT * FROM dept_manager
 SELECT * FROM dept_emp
 
--- Returning employee number, last name, first name, sex, and salary.
-SELECT salaries.emp_no, last_name, first_name, sex, salary
-FROM employees
-INNER JOIN salaries
-ON employees.emp_no = salaries.emp_no;
+--List the following details of each employee: employee number, last name, first name, sex, and salary.
+SELECT s.emp_no, e.last_name, e.first_name, e.sex, s.salary
+FROM employees as e
+INNER JOIN salaries as s
+ON e.emp_no = s.emp_no;
 
---Returning first name, last name, and hire date for employees who were hired in 1986.
+--List first name, last name, and hire date for employees who were hired in 1986.
 SELECT last_name, first_name, hire_date
 FROM employees
 WHERE
 	hire_date BETWEEN '1986-01-01' AND '1986-12-31'
 	
---Returning the manager of each department with the following information:
+--List the manager of each department with the following information:
 --department number, department name, the manager's employee number, last name, first name.
-SELECT * 
+SELECT dm.dept_no, d.dept_name, dm.emp_no, last_name, first_name
+FROM dept_manager as dm
+JOIN employees as e
+ON dm.emp_no = e.emp_no
+JOIN departments as d
+on d.dept_no = dm.dept_no
+
+-- A list of the departments of each employee with the following information: employee number, last name, first name, and department name.
+SELECT *
+FROM dept_emp as de
+JOIN employees as e
+ON de.emp_no = e.emp_no
+
 
 
