@@ -1,9 +1,4 @@
-﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
--- Link to schema: https://app.quickdatabasediagrams.com/#/d/mV3RdY
--- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
-
-
--- Staff Title Table
+﻿-- Staff Title Table
 CREATE TABLE "titles" (
     "title_id" VARCHAR   NOT NULL,
     "title" VARCHAR(30)   NOT NULL,
@@ -70,4 +65,3 @@ REFERENCES "employees" ("emp_no");
 
 ALTER TABLE "dept_emp" ADD CONSTRAINT "fk_dept_emp_dept_no" FOREIGN KEY("dept_no")
 REFERENCES "departments" ("dept_no");
-
